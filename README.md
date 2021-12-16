@@ -1,22 +1,22 @@
-# playground_anime_photo
+# playground anime photo
 
 この記事でscratchからOpenCVを使って画像をアニメ化してみます。
 
 基本的な基準は、画像の輪郭を抽出するー画像を減色処理、ノイズ減少処理するーこの２つを結合する。
 
-1.OpenCVをインストールする
+## 1.OpenCVをインストールする
 
-1)Anaconda Promptを開く
+### 1)Anaconda Promptを開く
 
-2)Anaconda Promptで以下のコマンドよりOpenCVをインストールする
+### 2)Anaconda Promptで以下のコマンドよりOpenCVをインストールする
 
 ```
 pip install opencv-python
 ```
 
-2.元画像の読み出し
+## 2.元画像の読み出し
 
-1)必要なライブラリをインポートする
+### 1)必要なライブラリをインポートする
 
 ```py
 import cv2
@@ -25,7 +25,7 @@ import matplotlib.image as img
 from matplotlib import pyplot as plt
 ```
 
-2)元画像の読み出し
+### 2)元画像の読み出し
 以下のコードで画像が出てきます。
 
 ```py
@@ -37,7 +37,7 @@ cv2.destroyAllWindows()
 
 ![1628496761(1).png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1668082/3058b115-4296-f261-d8f5-ce92197f6341.png)
 
-3.輪郭を抽出する
+## 3.輪郭を抽出する
 
 まず、cv2.cvtColorより元画像をグレースケールに変換します。さらに、cv2.medianBlur関数より平滑化処理します。最後に、cv2.adaptiveThresholdえ()を使って輪郭を抽出します。
 
@@ -63,7 +63,7 @@ cv2.destroyAllWindows()
 
 ![1628498012(1).png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1668082/3eed0768-4b2d-4664-7745-208864562e68.png)
 
-4.減色処理する
+## 4.減色処理する
 
 アニメ化画像の色の数量は元画像より少ないべきです。こちらでK-means法を使って減色処理をします。8個の色にしたいなので、kの値を8にします。以下のコードで減色処理をしました。
 
@@ -86,7 +86,7 @@ cv2.destroyAllWindows()
 
 ![f1146b7fcc71147433aa85d93b45e3b.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1668082/a8824968-6add-b532-18f6-b47f79e2c759.png)
 
-5.ノイズを消す
+## 5.ノイズを消す
 このステップで、cv2.bilateralFilterを使って画像のノイズを消します。生成された画像の解像度を下げます。
 
 ```py
@@ -102,7 +102,7 @@ cv2.destroyAllWindows()
 
 ![29e6310675f015ab95d0911adfcfa3d.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1668082/deab4437-499f-f53c-bec1-4202b9f0b4af.png)
 
-6.減色処理とノイズ減少処理した画像を輪郭と結合する
+## 6.減色処理とノイズ減少処理した画像を輪郭と結合する
 cv2.bitwise_and関数を使って減色処理とノイズ減少処理した画像を輪郭と結合します。
 
 ```py
@@ -122,7 +122,7 @@ cv2.destroyAllWindows()
 
 オリジナルではありません。
 
-勉強したサイト：[OpenCV projects – How to cartoonize an image with OpenCV in Python?](http://datahacker.rs/002-opencv-projects-how-to-cartoonize-an-image-with-opencv-in-python/#Detecting-and-emphasizing-edges)
+### 勉強したサイト：[OpenCV projects – How to cartoonize an image with OpenCV in Python?](http://datahacker.rs/002-opencv-projects-how-to-cartoonize-an-image-with-opencv-in-python/#Detecting-and-emphasizing-edges)
 
 引用文
 
